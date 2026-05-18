@@ -2,18 +2,39 @@
 
 AI-assisted pipeline for generating animated math/ML explainer videos with [Manim](https://www.manim.community/), driven by Claude Code slash commands.
 
-## Prerequisites
+## Setup (one-touch)
 
-- Python 3.10+
-- [Manim Community](https://docs.manim.community/en/stable/installation.html): `pip install manim`
-- LaTeX distribution (e.g. TeX Live, MiKTeX)
-- [Claude Code](https://claude.ai/code) with this repo open as the working directory
-- ffmpeg (for composition)
+**Requires:** [Conda](https://docs.conda.io/en/latest/miniconda.html) + LaTeX (see below) + [Claude Code](https://claude.ai/code).
+
+```bash
+git clone git@github.com:kvgkvg/manim_generation_workflow.git
+cd manim_generation_workflow
+bash setup.sh
+conda activate manim-workflow
+```
+
+`setup.sh` creates the `manim-workflow` conda env with Python 3.11, ffmpeg, and manim pre-installed.
+
+### LaTeX (required for math rendering)
+
+| OS | Command |
+|---|---|
+| Arch/Manjaro | `sudo pacman -S texlive-most` |
+| Ubuntu/Debian | `sudo apt install texlive-full` |
+| macOS | `brew install --cask mactex` |
+| Windows | Install [MiKTeX](https://miktex.org/) |
+
+### Verify
+
+```bash
+manim --version   # should print Manim Community vX.X.X
+latex --version   # should print pdfTeX or similar
+```
 
 ## Quickstart
 
 1. Drop your content into `content/<section>/` — one `slides.pdf` and one `transcript.txt` per section.
-2. Open Claude Code in this directory.
+2. Open Claude Code in this directory (`conda activate manim-workflow` first).
 3. Run the commands below in order.
 
 ## Commands
